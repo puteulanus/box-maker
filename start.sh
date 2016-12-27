@@ -38,9 +38,9 @@ sleep 3
 cf ic init
 
 # 拉取库
-wget -O bluemix-source.zip https://github.com/puteulanus/box-maker/archive/master.zip
-unzip bluemix-source.zip
-cd bluemix-source-master
+wget -O box-maker.zip https://github.com/puteulanus/box-maker/archive/master.zip
+unzip box-maker.zip
+cd box-maker-master
 
 # 生成密码
 passwd=$(openssl rand -base64 8 | md5sum | head -c12)
