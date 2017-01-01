@@ -2,11 +2,11 @@
 
 # Download
 cd /usr/www/default/public_html
-wget https://github.com/kalcaddle/KODExplorer/archive/master.zip
-unzip master.zip
-rm -rf master.zip
-mv KODExplorer-master/* ./
-rm -rf KODExplorer-master
+wget https://github.com/kalcaddle/KODExplorer/archive/3.23.zip
+unzip 3.23.zip
+rm -rf 3.23.zip
+mv KODExplorer-3.23/* ./
+rm -rf KODExplorer-3.23
 
 # Configure
 touch /usr/www/default/public_html/data/system/install.lock
