@@ -13,7 +13,7 @@ ADD passwd.txt /tmp/passwd.txt
 RUN bash /tmp/script/source-update.sh
 
 # Install Useful tools
-RUN yum install -y wget tar unzip socat
+RUN yum install -y wget tar unzip socat openssl
 
 # Install PHP
 RUN bash /tmp/script/php-install.sh
