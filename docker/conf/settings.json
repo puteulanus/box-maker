@@ -13,7 +13,7 @@
     "cache-size-mb": 4,
     "dht-enabled": false,
     "download-dir": "/usr/www/transmission/download",
-    "download-queue-enabled": true,
+    "download-queue-enabled": false,
     "download-queue-size": 5,
     "encryption": 1,
     "idle-seeding-limit": 30,
