@@ -51,7 +51,7 @@ cd docker
 cf ic build -t pt:v1 .
 
 # 运行容器
-cf ic ip bind $(cf ic ip request | cut -d \" -f 2 | tail -1) $(cf ic run -m 2048 --name=pt -p 80 -p 443 -p 3306 -p 3306/udp registry.ng.bluemix.net/`cf ic namespace get`/pt:v1)
+cf ic ip bind $(cf ic ip request | cut -d \" -f 2 | tail -1) $(cf ic run -m 2048 --name=pt -p 80 -p 443 -p 3306 -p 3306/udp registry.ng.bluemix.net/`cf ic namespace get`/pt:v1 | head -1)
 
 # 显示信息
 while ! cf ic inspect pt | grep PublicIpAddress | awk -F\" '{print $4}' | grep -q .
