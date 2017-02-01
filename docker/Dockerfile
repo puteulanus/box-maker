@@ -27,6 +27,9 @@ RUN bash /tmp/script/fm-install.sh
 # Install transmission
 RUN bash /tmp/script/transmission-install.sh
 
+# Install Cloud9
+RUN bash /tmp/script/c9-install.sh
+
 # Setup Startup
 RUN bash /tmp/script/run-when-start.sh
 
