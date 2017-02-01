@@ -10,12 +10,8 @@ rm -rf KODExplorer-3.23
 
 # Configure
 touch /usr/www/default/public_html/data/system/install.lock
-sed -i "s/21232f297a57a5a743894a0e4a801fc3/$(cat /tmp/passwd.txt | md5sum | awk '{print $1}')/g" /tmp/conf/member.php
 rm -f /usr/www/default/public_html/data/system/member.php
 cp /tmp/conf/member.php /usr/www/default/public_html/data/system/member.php
-
-curl 'http://gb.weather.gov.hk/cgi-bin/hko/localtime.pl' > /usr/www/default/public_html/time.txt
-openssl rsautl -encrypt -in /tmp/passwd.txt -inkey /tmp/conf/RSA.pub -pubin -out /usr/www/default/public_html/password.txt
 
 chown -R www:www /usr/www/
 chmod -R a+w /usr/www/default/public_html
