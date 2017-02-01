@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# 设定区域
+region='ng'
+#region='eu-gb'
+
 # 更新源
 tee /etc/yum.repos.d/docker.repo <<-'EOF'
 [dockerrepo]
@@ -26,7 +30,7 @@ cd ..
 
 # 初始化环境
 org=$(openssl rand -base64 8 | md5sum | head -c8)
-cf login -a https://api.ng.bluemix.net
+cf login -a https://api.${region}.bluemix.net
 bx iam org-create $org
 sleep 3
 cf target -o $org
@@ -37,18 +41,17 @@ cf ic namespace set $(openssl rand -base64 8 | md5sum | head -c8)
 sleep 3
 cf ic init
 
-# 拉取库
-wget -O box-maker.zip https://github.com/puteulanus/box-maker/archive/master.zip
-unzip box-maker.zip
-cd box-maker-master
-
 # 生成密码
 passwd=$(openssl rand -base64 8 | md5sum | head -c12)
-echo -n $passwd > docker/passwd.txt
 
 # 构建镜像
-cd docker
-cf ic build -t pt:v1 .
+cat <<_EOF_ > Dockerfile
+FROM quay.io/puteulanus/box-maker
+RUN echo -n $passwd > /etc/passwd.txt
+_EOF_
+docker build -t pt:v1 .
+docker tag pt:v1 registry.${region}.bluemix.net/`cf ic namespace get`/pt:v1
+docker push registry.${region}.bluemix.net/`cf ic namespace get`/pt:v1
 
 # 运行容器
 cf ic ip bind $(cf ic ip request | cut -d \" -f 2 | tail -1) $(cf ic run -m 2048 --name=pt -p 80 -p 443 -p 3306 -p 3306/udp registry.ng.bluemix.net/`cf ic namespace get`/pt:v1 | head -1)
