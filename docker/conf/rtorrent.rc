@@ -2,10 +2,8 @@ directory = /usr/www/rtorrent/download
 # 默认下载位置
 session = /usr/www/rtorrent/.session
 # 记录下载进度、任务信息的位置
-port_range = 3307
+port_range = 3307-3307
 port_random = no
-upload_rate = 75
-# 上传速度上限 (kb)
 use_udp_trackers = yes
 dht = disable
 peer_exchange = yes

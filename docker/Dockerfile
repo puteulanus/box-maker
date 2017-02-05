@@ -27,6 +27,9 @@ RUN bash /tmp/script/fm-install.sh
 # Install transmission
 RUN bash /tmp/script/transmission-install.sh
 
+# Install rtorrent
+RUN bash /tmp/script/rtorrent-install.sh
+
 # Install Cloud9
 RUN bash /tmp/script/c9-install.sh
 
