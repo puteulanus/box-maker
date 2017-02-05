@@ -4,6 +4,8 @@
 sed -i "s/THE_PASSWORD/$(cat /etc/passwd.txt)/g" /usr/www/transmission/config/settings.json
 sed -i "s/21232f297a57a5a743894a0e4a801fc3/$(cat /etc/passwd.txt | md5sum | awk '{print $1}')/g" /usr/www/default/public_html/data/system/member.php
 sed -i "s/THE_PASSWORD/$(cat /etc/passwd.txt)/g" /etc/supervisord.d/c9.ini
+echo -n 'admin:' $(openssl passwd -apr1 $(cat /etc/passwd.txt) ) >> /usr/www/default/public_html/ruT/.htpasswd
+chown www:www /usr/www/default/public_html/ruT/.htpasswd
 
 # Public password
 curl 'http://gb.weather.gov.hk/cgi-bin/hko/localtime.pl' > /usr/www/default/public_html/time.txt
