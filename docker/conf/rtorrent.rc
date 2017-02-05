@@ -1,0 +1,19 @@
+directory = /usr/www/rtorrent/download
+# 默认下载位置
+session = /usr/www/rtorrent/.session
+# 记录下载进度、任务信息的位置
+port_range = 3307
+port_random = no
+upload_rate = 75
+# 上传速度上限 (kb)
+use_udp_trackers = yes
+dht = disable
+peer_exchange = yes
+encoding_list = UTF-8
+encryption = allow_incoming,enable_retry,prefer_plaintext
+schedule = watch_directory,5,5,load_start=/usr/www/rtorrent/torrent/*.torrent
+schedule = untied_directory,5,5,stop_untied=
+schedule = tied_directory,5,5,start_tied=
+schedule = low_diskspace,5,60,close_low_diskspace=1024M
+scgi_port = 127.0.0.1:5000
+# 跟 ruTorrent 有关 
