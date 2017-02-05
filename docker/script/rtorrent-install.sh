@@ -5,7 +5,8 @@ yum install rtorrent -y
 
 # Configuration
 mkdir -p /usr/www/rtorrent/{.session,torrent,download,ruTorrent}
-cp /tmp/conf/rtorrent.rc /usr/www/.rtorrent.rc
+cp /tmp/conf/rtorrent.rc /home/www/.rtorrent.rc
+chown www:www /home/www/.rtorrent.rc
 cd /usr/www/rtorrent/ruTorrent/
 wget -O ruTorrent.zip 'https://github.com/Novik/ruTorrent/archive/master.zip'
 unzip ruTorrent.zip
