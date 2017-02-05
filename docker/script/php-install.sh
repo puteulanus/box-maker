@@ -8,5 +8,5 @@ php-mssql php-snmp php-soap php-tidy php-pecl-ssh2
 
 # Configure
 sed -i "s/daemonize = yes/daemonize = no/" /etc/php-fpm.conf
-sed -i "s/user = apache/user = www/" /etc/php-fpm.d/www.conf
-sed -i "s/group = apache/user = www/" /etc/php-fpm.d/www.conf
+#sed -i "s/user = apache/user = www/" /etc/php-fpm.d/www.conf
+#sed -i "s/group = apache/user = www/" /etc/php-fpm.d/www.conf
