@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Install
-yum install rtorrent -y
+yum install rtorrent httpd-tools -y
 
 # Configuration
 mkdir -p /usr/www/rtorrent/{.session,torrent,download,ruTorrent}
