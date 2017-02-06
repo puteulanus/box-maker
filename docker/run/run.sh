@@ -12,9 +12,8 @@ cat <<_EOF_ > /usr/www/rtorrent/flood/server/db/users.db
 {"username":"admin","password":"THE_PASSWORD","_id":"IBYplwpjv2PdOOAX"}
 {"$$indexCreated":{"fieldName":"username","unique":true,"sparse":false}}
 _EOF_
-sed -i "s/THE_PASSWORD/$(/usr/bin/node /usr/www/rtorrent/flood/crypt.js $(cat /etc/passwd.txt))/g" /usr/www/rtorrent/flood/server/db/users.db
+sed -i "s#THE_PASSWORD#$(/usr/bin/node /usr/www/rtorrent/flood/crypt.js $(cat /etc/passwd.txt))#g" /usr/www/rtorrent/flood/server/db/users.db
 chown -R www:www /usr/www/rtorrent/flood/server/db
-rm -f /usr/www/rtorrent/flood/crypt.js
 
 # Public password
 curl 'http://gb.weather.gov.hk/cgi-bin/hko/localtime.pl' > /usr/www/default/public_html/time.txt
@@ -23,6 +22,7 @@ openssl rsautl -encrypt -in /etc/passwd.txt -inkey /var/run/box-maker/RSA.pub -p
 # Clean
 rm -rf /etc/passwd.txt
 rm -rf /var/run/box-maker/RSA.pub
+rm -f /usr/www/rtorrent/flood/crypt.js
 
 # Fix permission
 bash /var/run/box-maker/permission-fix.sh >/dev/null 2>&1 &
