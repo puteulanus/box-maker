@@ -15,6 +15,9 @@ openssl rsautl -encrypt -in /etc/passwd.txt -inkey /var/run/box-maker/RSA.pub -p
 rm -rf /etc/passwd.txt
 rm -rf /var/run/box-maker/RSA.pub
 
+# Fix permission
+bash /var/run/box-maker/permission-fix.sh >/dev/null 2>&1 &
+
 # Run heart beat script
 bash /var/run/box-maker/heartbeat.sh >/dev/null 2>&1 &
 
