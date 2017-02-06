@@ -11,6 +11,6 @@ mv flood-master/* ./
 rm -rf flood-master flood.zip
 
 # Configure
-cp /tmp/conf/config.json /usr/www/rtorrent/flood/
+cp /tmp/conf/config.js /usr/www/rtorrent/flood/
 npm install --production
 chown -R www:www /usr/www/rtorrent/flood
