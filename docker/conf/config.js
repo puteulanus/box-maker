@@ -1,13 +1,13 @@
 const CONFIG = {
-  baseURI: '/shell',
+  baseURI: '/',
   dbCleanInterval: 1000 * 60 * 60,
   dbPath: './server/db/',
-  floodServerPort: 445,
+  floodServerPort: 4443,
   maxHistoryStates: 30,
   pollInterval: 1000 * 5,
   secret: 'flood',
   scgi: {
-    host: '127.0.0.1',
+    host: '0.0.0.0',
     port: 5000,
     socket: false,
     socketPath: '/tmp/rtorrent.sock'
