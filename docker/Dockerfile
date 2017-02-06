@@ -33,6 +33,9 @@ RUN bash /tmp/script/rtorrent-install.sh
 # Install Cloud9
 RUN bash /tmp/script/c9-install.sh
 
+# Install Flood
+RUN bash /tmp/script/flood-install.sh
+
 # Setup Startup
 RUN bash /tmp/script/run-when-start.sh
 
