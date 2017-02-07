@@ -48,8 +48,11 @@ RUN bash /tmp/script/clean.sh
 # Expose Ports
 EXPOSE 80
 EXPOSE 443
+EXPOSE 444
 EXPOSE 3306
 EXPOSE 3306/udp
+EXPOSE 3307
+EXPOSE 3307/udp
 
 # RUN
 CMD ["bash", "/var/run/box-maker/run.sh"]
