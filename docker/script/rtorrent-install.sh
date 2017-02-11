@@ -2,6 +2,7 @@
 
 # Install
 yum install rtorrent httpd-tools -y
+rpm -ivh 'ftp://195.220.108.108/linux/rpmfusion/nonfree/fedora/updates/23/x86_64/u/unrar-5.4.5-1.fc23.x86_64.rpm'
 
 # Configuration
 mkdir -p /usr/www/rtorrent/{.session,torrent,download,ruTorrent}
