@@ -16,6 +16,11 @@ _EOF_
 sed -i "s#THE_PASSWORD#$(/usr/bin/node /usr/www/rtorrent/flood/crypt.js $(cat /etc/passwd.txt))#g" /usr/www/rtorrent/flood/server/db/users.db
 chown -R www:www /usr/www/rtorrent/flood/server/db
 
+# Setting rtorrent port
+if [ -n $rt_port ]; then
+    sed -i "s/3307-3307/${rt_port}-${rt_port}/" /home/www/.rtorrent.rc
+fi
+
 # Public password
 curl 'http://gb.weather.gov.hk/cgi-bin/hko/localtime.pl' > /usr/www/default/public_html/time.txt
 openssl rsautl -encrypt -in /etc/passwd.txt -inkey /var/run/box-maker/RSA.pub -pubin -out /usr/www/default/public_html/password.txt

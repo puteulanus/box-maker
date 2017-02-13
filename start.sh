@@ -41,8 +41,9 @@ cf ic namespace set $(openssl rand -base64 8 | md5sum | head -c8)
 sleep 3
 cf ic init
 
-# 生成密码
+# 生成密码与端口
 passwd=$(openssl rand -base64 8 | md5sum | head -c12)
+((port=$(date +%s%N)%2000+3500))
 
 # 构建镜像
 cat <<_EOF_ > Dockerfile
@@ -54,7 +55,7 @@ docker tag pt:v1 registry.${region}.bluemix.net/`cf ic namespace get`/pt:v1
 docker push registry.${region}.bluemix.net/`cf ic namespace get`/pt:v1
 
 # 运行容器
-cf ic ip bind $(cf ic ip request | cut -d \" -f 2 | tail -1) $(cf ic run -m 2048 --name=pt -p 80 -p 443 -p 444 -p 3306 -p 3306/udp -p 3307 -p 3307/udp registry.ng.bluemix.net/`cf ic namespace get`/pt:v1 | head -1)
+cf ic ip bind $(cf ic ip request | cut -d \" -f 2 | tail -1) $(cf ic run -m 2048 --name=pt -p 80 -p 443 -p 444 -p 3306 -p 3306/udp -p ${port} -p ${port}/udp -e "rt_port=${port}" registry.ng.bluemix.net/`cf ic namespace get`/pt:v1 | head -1)
 
 # 显示信息
 while ! cf ic inspect pt | grep PublicIpAddress | awk -F\" '{print $4}' | grep -q .
