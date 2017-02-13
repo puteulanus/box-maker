@@ -10,12 +10,18 @@ mv KODExplorer-master/* ./
 rm -rf KODExplorer-master
 
 # Configure
-#touch /usr/www/default/public_html/data/system/install.lock
-#rm -f /usr/www/default/public_html/data/system/member.php
-cp /tmp/conf/system_member.php /usr/www/default/public_html/data/system/system_member.php
-cp /tmp/conf/system_group.php /usr/www/default/public_html/data/system/system_group.php
-mkdir /usr/www/default/public_html/data/User/admin
+touch /usr/www/default/public_html/data/system/install.lock
+mkdir -p /usr/www/default/public_html/data/User/admin/{data,home,recycle}
+rm -f /usr/www/default/public_html/data/system/system_member.php
+rm -f /usr/www/default/public_html/data/system/system_group.php
+rm -f /usr/www/default/public_html/data/system/system_setting.php
+cp /tmp/conf/fm/system_member.php /usr/www/default/public_html/data/system/system_member.php
+cp /tmp/conf/fm/system_group.php /usr/www/default/public_html/data/system/system_group.php
+cp /tmp/conf/fm/system_setting.php /usr/www/default/public_html/data/system/system_setting.php
+cp /tmp/conf/fm/config.php /usr/www/default/public_html/data/User/admin/data/config.php
+
 rm -f /usr/www/default/public_html/lib/update.php
+rm -f /usr/www/default/public_html/data/session/index.html
 
 chown -R www:www /usr/www/
 chmod -R a+w /usr/www/default/public_html
