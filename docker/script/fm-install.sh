@@ -12,9 +12,6 @@ rm -rf KODExplorer-master
 # Configure
 touch /usr/www/default/public_html/data/system/install.lock
 sed -i "s#define('KOD_SESSION',   DATA_PATH .'session/');#define('KOD_SESSION',   '/tmp/' .'session/');#" /usr/www/default/public_html/config/config.php
-mkdir /tmp/session
-chown apache:apache /tmp/session
-chown a+rw /tmp/session
 mkdir -p /usr/www/default/public_html/data/User/admin/{data,home,recycle}
 rm -f /usr/www/default/public_html/data/system/system_member.php
 rm -f /usr/www/default/public_html/data/system/system_group.php
