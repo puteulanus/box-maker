@@ -13,6 +13,7 @@ rm -rf KODExplorer-master
 touch /usr/www/default/public_html/data/system/install.lock
 sed -i "s#define('KOD_SESSION',   DATA_PATH .'session/');#define('KOD_SESSION',   '/tmp/' .'session/');#" /usr/www/default/public_html/config/config.php
 mkdir -p /usr/www/default/public_html/data/User/admin/{data,home,recycle}
+mkdir /usr/www/default/public_html/data/User/admin/home/desktop
 rm -f /usr/www/default/public_html/data/system/system_member.php
 rm -f /usr/www/default/public_html/data/system/system_group.php
 rm -f /usr/www/default/public_html/data/system/system_setting.php
@@ -20,6 +21,8 @@ cp /tmp/conf/fm/system_member.php /usr/www/default/public_html/data/system/syste
 cp /tmp/conf/fm/system_group.php /usr/www/default/public_html/data/system/system_group.php
 cp /tmp/conf/fm/system_setting.php /usr/www/default/public_html/data/system/system_setting.php
 cp /tmp/conf/fm/config.php /usr/www/default/public_html/data/User/admin/data/config.php
+
+cp /tmp/conf/fm/*.oexe /usr/www/default/public_html/data/User/admin/home/desktop/
 
 rm -f /usr/www/default/public_html/lib/update.php
 rm -f /usr/www/default/public_html/data/session/index.html
