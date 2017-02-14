@@ -12,6 +12,8 @@ rm -rf KODExplorer-master
 # Configure
 touch /usr/www/default/public_html/data/system/install.lock
 sed -i "s#define('KOD_SESSION',   DATA_PATH .'session/');#define('KOD_SESSION',   '/tmp/' .'session/');#" /usr/www/default/public_html/config/config.php
+echo -e "\n\n\$config['setting_system_default']['new_user_app'] = '';" >> /usr/www/default/public_html/config/setting.php
+echo 'unset($config["setting_menu_default"][3]);' >> /usr/www/default/public_html/config/setting.php
 mkdir -p /usr/www/default/public_html/data/User/admin/{data,home,recycle}
 mkdir /usr/www/default/public_html/data/User/admin/home/desktop
 rm -f /usr/www/default/public_html/data/system/system_member.php
