@@ -52,7 +52,10 @@ RUN echo -n $passwd > /etc/passwd.txt
 _EOF_
 docker build -t pt:v1 .
 docker tag pt:v1 registry.${region}.bluemix.net/`cf ic namespace get`/pt:v1
-docker push registry.${region}.bluemix.net/`cf ic namespace get`/pt:v1
+while ! cf ic images | grep -q "registry.${region}.bluemix.net/$(cf ic namespace get)/pt:v1"
+do
+	docker push registry.${region}.bluemix.net/`cf ic namespace get`/pt:v1
+done
 
 # 运行容器
 cf ic ip bind $(cf ic ip request | cut -d \" -f 2 | tail -1) $(cf ic run -m 2048 --name=pt -p 80 -p 443 -p 444 -p 3306 -p 3306/udp -p ${port} -p ${port}/udp -e "rt_port=${port}" registry.ng.bluemix.net/`cf ic namespace get`/pt:v1 | head -1)
