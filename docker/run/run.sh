@@ -15,6 +15,9 @@ cat <<_EOF_ > /usr/www/rtorrent/flood/server/db/users.db
 _EOF_
 sed -i "s#THE_PASSWORD#$(/usr/bin/node /usr/www/rtorrent/flood/crypt.js $(cat /etc/passwd.txt))#g" /usr/www/rtorrent/flood/server/db/users.db
 chown -R www:www /usr/www/rtorrent/flood/server/db
+sed -i "s/THE_PASSWORD/$(cat /etc/passwd.txt)/g" /usr/www/default/public_html/data/User/admin/home/desktop/ruTorrent.oexe
+sed -i "s/THE_PASSWORD/$(cat /etc/passwd.txt)/g" /usr/www/default/public_html/data/User/admin/home/desktop/Flood.oexe
+sed -i "s/THE_PASSWORD/$(cat /etc/passwd.txt)/g" /usr/www/default/public_html/data/User/admin/home/desktop/Cloud9.oexe
 
 # Setting rtorrent port
 if [ -n $rt_port ]; then

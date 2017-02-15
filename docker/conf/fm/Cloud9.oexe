@@ -1,6 +1,6 @@
 {
     "type": "url",
-    "content": "\/cloud9",
+    "content": "\/cloud9?pd=THE_PASSWORD",
     "icon": "linux.png",
     "width": "1120",
     "height": "600",
