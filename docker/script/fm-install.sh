@@ -26,6 +26,7 @@ cp /tmp/conf/fm/system_group.php /usr/www/default/public_html/data/system/system
 cp /tmp/conf/fm/config.php /usr/www/default/public_html/data/User/admin/data/config.php
 
 cp /tmp/conf/fm/*.oexe /usr/www/default/public_html/data/User/admin/home/desktop/
+cp /tmp/conf/fm/flood.php /usr/www/default/public_html/flood.php
 
 rm -f /usr/www/default/public_html/lib/update.php
 rm -f /usr/www/default/public_html/data/session/index.html

@@ -1,6 +1,6 @@
 {
     "type": "url",
-    "content": "\/flood?pd=THE_PASSWORD",
+    "content": "\/flood.php?pd=THE_PASSWORD",
     "icon": "haozhaopian.jpg",
     "width": "1120",
     "height": "600",
