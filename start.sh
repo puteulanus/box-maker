@@ -52,7 +52,7 @@ RUN echo -n $passwd > /etc/passwd.txt
 _EOF_
 docker build -t pt:v1 .
 docker tag pt:v1 registry.${region}.bluemix.net/`cf ic namespace get`/pt:v1
-while ! cf ic images | grep -q "registry.${region}.bluemix.net/$(cf ic namespace get)/pt:v1"
+while ! cf ic images | grep -q "registry.${region}.bluemix.net/$(cf ic namespace get)/pt"
 do
 	docker push registry.${region}.bluemix.net/`cf ic namespace get`/pt:v1
 done
