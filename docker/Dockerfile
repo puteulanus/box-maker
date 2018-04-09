@@ -6,9 +6,6 @@ ADD script /tmp/script
 # Add configs
 ADD conf /tmp/conf
 
-# Add passwd
-ADD passwd.txt /etc/passwd.txt
-
 # Update sources
 RUN bash /tmp/script/source-update.sh
 

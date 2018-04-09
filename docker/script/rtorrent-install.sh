@@ -20,3 +20,9 @@ rm -rf ruTorrent-master ruTorrent.zip
 ln -s /root/rtorrent/ruTorrent /root/default/public_html/ruT
 rm -rf /root/default/public_html/data/User/admin/home/download
 ln -s /root/rtorrent/download /root/default/public_html/data/User/admin/home/download
+
+sed -i "/\"php\"/s/''/'\/usr\/bin\/php'/" /root/default/public_html/ruT/conf/config.php
+sed -i "/\"curl\"/s/''/'\/usr\/bin\/curl'/" /root/default/public_html/ruT/conf/config.php
+sed -i "/\"gzip\"/s/''/'\/usr\/bin\/gzip'/" /root/default/public_html/ruT/conf/config.php
+sed -i "/\"id\"/s/''/'\/usr\/bin\/id'/" /root/default/public_html/ruT/conf/config.php
+sed -i "/\"stat\"/s/''/'\/usr\/bin\/stat'/" /root/default/public_html/ruT/conf/config.php
