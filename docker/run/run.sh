@@ -2,7 +2,7 @@
 
 # Setting password
 sed -i "s/THE_PASSWORD/${PASSWORD}/g" /etc/supervisord.d/c9.ini
-htpasswd -nb admin $(cat /etc/passwd.txt) > /root/default/public_html/ruT/.htpasswd
+htpasswd -nb admin ${PASSWORD} > /root/default/public_html/ruT/.htpasswd
 mv /var/run/box-maker/crypt.js /root/rtorrent/flood/
 mkdir /root/rtorrent/flood/server/db
 cat <<_EOF_ > /root/rtorrent/flood/server/db/users.db
