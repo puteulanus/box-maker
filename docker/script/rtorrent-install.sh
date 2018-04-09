@@ -3,6 +3,9 @@
 # Install
 yum install rtorrent httpd-tools -y
 rpm -ivh 'ftp://195.220.108.108/linux/rpmfusion/nonfree/fedora/updates/23/x86_64/u/unrar-5.4.5-1.fc23.x86_64.rpm'
+rpm -Uvh 'http://li.nux.ro/download/nux/dextop/el7/x86_64/nux-dextop-release-0-5.el7.nux.noarch.rpm'
+yum install ffmpeg ffmpeg-devel -y
+yum install mediainfo sox -y
 
 # Configuration
 mkdir -p /root/rtorrent/{.session,torrent,download,ruTorrent}
