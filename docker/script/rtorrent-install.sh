@@ -11,7 +11,7 @@ yum install mediainfo sox -y
 mkdir -p /root/rtorrent/{.session,torrent,download,ruTorrent}
 cp /tmp/conf/rtorrent.rc /root/.rtorrent.rc
 cd /root/rtorrent/ruTorrent/
-wget -O ruTorrent.zip 'https://github.com/Novik/ruTorrent/archive/master.zip'
+wget -q -O ruTorrent.zip 'https://github.com/Novik/ruTorrent/archive/master.zip'
 unzip ruTorrent.zip
 mv ruTorrent-master/* ./
 mv ruTorrent-master/.htaccess ./

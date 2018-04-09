@@ -2,7 +2,7 @@
 
 # Download
 cd /root/default/public_html
-wget https://github.com/kalcaddle/KodExplorer/archive/master.zip
+wget -q https://github.com/kalcaddle/KodExplorer/archive/master.zip
 unzip master.zip
 rm -rf master.zip
 mv KodExplorer-master/* ./
