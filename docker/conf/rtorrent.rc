@@ -1,6 +1,6 @@
-directory = /usr/www/rtorrent/download
+directory = /root/rtorrent/download
 # 默认下载位置
-session = /usr/www/rtorrent/.session
+session = /root/rtorrent/.session
 # 记录下载进度、任务信息的位置
 port_range = 3307-3307
 port_random = no
@@ -9,7 +9,7 @@ dht = disable
 peer_exchange = yes
 encoding_list = UTF-8
 encryption = allow_incoming,enable_retry,prefer_plaintext
-schedule = watch_directory,5,5,load_start=/usr/www/rtorrent/torrent/*.torrent
+schedule = watch_directory,5,5,load_start=/root/rtorrent/torrent/*.torrent
 schedule = untied_directory,5,5,stop_untied=
 schedule = tied_directory,5,5,start_tied=
 schedule = low_diskspace,5,60,close_low_diskspace=1024M
