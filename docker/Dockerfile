@@ -54,5 +54,7 @@ EXPOSE 3306/udp
 EXPOSE 3307
 EXPOSE 3307/udp
 
+ENV PASSWORD admin
+
 # RUN
 CMD ["bash", "/var/run/box-maker/run.sh"]
