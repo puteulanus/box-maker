@@ -10,3 +10,4 @@ php-pdo-dblib php-snmp php-soap php-tidy php-pecl-ssh2
 sed -i "s/daemonize = yes/daemonize = no/" /etc/php-fpm.conf
 sed -i "s/user = apache/user = root/" /etc/php-fpm.d/www.conf
 sed -i "s/group = apache/user = root/" /etc/php-fpm.d/www.conf
+mkdir -p /run/php-fpm

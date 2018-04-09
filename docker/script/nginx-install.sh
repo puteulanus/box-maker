@@ -12,4 +12,5 @@ sed -i "s/#pid/pid/g" /etc/nginx/nginx.conf
 sed -i '/worker_connections/ i use epoll;' /etc/nginx/nginx.conf
 
 # Site Configure
+sed -i 's/default_server//' /etc/nginx/nginx.conf
 cp /tmp/conf/default.conf /etc/nginx/conf.d/default.conf
