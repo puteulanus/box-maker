@@ -1,43 +1,28 @@
 #!/bin/bash
 
+# Write password
+if [ -n $PASSWORD ];then  
+    echo $PASSWORD > /etc/passwd.txt 
+fi  
+
 # Setting password
-sed -i "s/THE_PASSWORD/$(cat /etc/passwd.txt)/g" /usr/www/transmission/config/settings.json
-sed -i "s/21232f297a57a5a743894a0e4a801fc3/$(cat /etc/passwd.txt | md5sum | awk '{print $1}')/g" /usr/www/default/public_html/data/system/system_member.php
-#sed -i "s/N449d3T7CuIjqxgFTtd7/$(openssl rand -base64 8 | md5sum | head -c20)/g" /usr/www/default/public_html/data/system/system_setting.php
 sed -i "s/THE_PASSWORD/$(cat /etc/passwd.txt)/g" /etc/supervisord.d/c9.ini
-htpasswd -nb admin $(cat /etc/passwd.txt) >> /usr/www/default/public_html/ruT/.htpasswd
-chown www:www /usr/www/default/public_html/ruT/.htpasswd
-mv /var/run/box-maker/crypt.js /usr/www/rtorrent/flood/
-mkdir /usr/www/rtorrent/flood/server/db
+htpasswd -nb admin $(cat /etc/passwd.txt) >> /root/default/public_html/ruT/.htpasswd
+mv /var/run/box-maker/crypt.js /root/rtorrent/flood/
+mkdir /root/rtorrent/flood/server/db
 cat <<_EOF_ > /usr/www/rtorrent/flood/server/db/users.db
 {"username":"admin","password":"THE_PASSWORD","_id":"IBYplwpjv2PdOOAX"}
 {"$$indexCreated":{"fieldName":"username","unique":true,"sparse":false}}
 _EOF_
-sed -i "s#THE_PASSWORD#$(/usr/bin/node /usr/www/rtorrent/flood/crypt.js $(cat /etc/passwd.txt))#g" /usr/www/rtorrent/flood/server/db/users.db
-chown -R www:www /usr/www/rtorrent/flood/server/db
-sed -i "s/THE_PASSWORD/$(cat /etc/passwd.txt)/g" /usr/www/default/public_html/data/User/admin/home/desktop/ruTorrent.oexe
-sed -i "s/THE_PASSWORD/$(cat /etc/passwd.txt)/g" /usr/www/default/public_html/data/User/admin/home/desktop/Flood.oexe
-sed -i "s/THE_PASSWORD/$(cat /etc/passwd.txt)/g" /usr/www/default/public_html/data/User/admin/home/desktop/Cloud9.oexe
-
-# Setting rtorrent port
-if [ -n $rt_port ]; then
-    sed -i "s/3307-3307/${rt_port}-${rt_port}/" /home/www/.rtorrent.rc
-fi
-
-# Public password
-curl 'http://gb.weather.gov.hk/cgi-bin/hko/localtime.pl' > /usr/www/default/public_html/time.txt
-openssl rsautl -encrypt -in /etc/passwd.txt -inkey /var/run/box-maker/RSA.pub -pubin -out /usr/www/default/public_html/password.txt
+sed -i "s#THE_PASSWORD#$(/usr/bin/node /usr/www/rtorrent/flood/crypt.js $(cat /etc/passwd.txt))#g" /root/rtorrent/flood/server/db/users.db
+sed -i "s/THE_PASSWORD/$(cat /etc/passwd.txt)/g" /root/default/public_html/data/User/admin/home/desktop/ruTorrent.oexe
+sed -i "s/THE_PASSWORD/$(cat /etc/passwd.txt)/g" /root/default/public_html/data/User/admin/home/desktop/Flood.oexe
+sed -i "s/THE_PASSWORD/$(cat /etc/passwd.txt)/g" /root/default/public_html/data/User/admin/home/desktop/Cloud9.oexe
 
 # Clean
 rm -rf /etc/passwd.txt
 rm -rf /var/run/box-maker/RSA.pub
 rm -f /usr/www/rtorrent/flood/crypt.js
-
-# Fix permission
-bash /var/run/box-maker/permission-fix.sh >/dev/null 2>&1 &
-
-# Run heart beat script
-bash /var/run/box-maker/heartbeat.sh >/dev/null 2>&1 &
 
 # Run supervisor
 supervisord -nc /etc/supervisord.conf
