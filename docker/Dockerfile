@@ -25,7 +25,7 @@ RUN bash /tmp/script/nginx-install.sh
 RUN bash /tmp/script/fm-install.sh
 
 # Install transmission
-RUN bash /tmp/script/transmission-install.sh
+#RUN bash /tmp/script/transmission-install.sh
 
 # Install rtorrent
 RUN bash /tmp/script/rtorrent-install.sh
