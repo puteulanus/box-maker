@@ -9,7 +9,7 @@ cat <<_EOF_ > /root/rtorrent/flood/server/db/users.db
 {"username":"admin","password":"THE_PASSWORD","_id":"IBYplwpjv2PdOOAX"}
 {"$$indexCreated":{"fieldName":"username","unique":true,"sparse":false}}
 _EOF_
-sed -i "s#THE_PASSWORD#$(/usr/bin/node /usr/www/rtorrent/flood/crypt.js ${PASSWORD})#g" /root/rtorrent/flood/server/db/users.db
+sed -i "s#THE_PASSWORD#$(/usr/bin/node /root/rtorrent/flood/crypt.js ${PASSWORD})#g" /root/rtorrent/flood/server/db/users.db
 sed -i "s/THE_PASSWORD/${PASSWORD}/g" /root/default/public_html/data/User/admin/home/desktop/ruTorrent.oexe
 sed -i "s/THE_PASSWORD/${PASSWORD}/g" /root/default/public_html/data/User/admin/home/desktop/Flood.oexe
 sed -i "s/THE_PASSWORD/${PASSWORD}/g" /root/default/public_html/data/User/admin/home/desktop/Cloud9.oexe
