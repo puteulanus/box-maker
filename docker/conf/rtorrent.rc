@@ -2,7 +2,7 @@ directory = /root/rtorrent/download
 # 默认下载位置
 session = /root/rtorrent/.session
 # 记录下载进度、任务信息的位置
-port_range = 3307-3307
+port_range = 3306-3306
 port_random = no
 use_udp_trackers = yes
 dht = on

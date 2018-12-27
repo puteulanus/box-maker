@@ -14,7 +14,6 @@ cd /root/rtorrent/ruTorrent/
 wget -q -O ruTorrent.zip 'https://github.com/Novik/ruTorrent/archive/master.zip'
 unzip ruTorrent.zip
 mv ruTorrent-master/* ./
-mv ruTorrent-master/.htaccess ./
 rm -rf ruTorrent-master ruTorrent.zip
 
 ln -s /root/rtorrent/ruTorrent /root/default/public_html/ruT

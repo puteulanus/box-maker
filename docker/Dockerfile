@@ -10,7 +10,7 @@ ADD conf /tmp/conf
 RUN bash /tmp/script/source-update.sh
 
 # Install Useful tools
-RUN yum install -y wget tar unzip socat openssl
+RUN yum install -y wget tar unzip openssl
 
 # Install PHP
 RUN bash /tmp/script/php-install.sh
@@ -21,17 +21,11 @@ RUN bash /tmp/script/nginx-install.sh
 # Install File Manager
 RUN bash /tmp/script/fm-install.sh
 
-# Install transmission
-#RUN bash /tmp/script/transmission-install.sh
-
 # Install rtorrent
 RUN bash /tmp/script/rtorrent-install.sh
 
 # Install Cloud9
 RUN bash /tmp/script/c9-install.sh
-
-# Install Flood
-RUN bash /tmp/script/flood-install.sh
 
 # Setup Startup
 RUN bash /tmp/script/run-when-start.sh
@@ -39,17 +33,17 @@ RUN bash /tmp/script/run-when-start.sh
 # ADD Run
 ADD run /var/run/box-maker
 
+# RClone
+RUN yum install -y rclone
+
 # Clean
-RUN bash /tmp/script/clean.sh
+RUN rm -rf /tmp/*
 
 # Expose Ports
 EXPOSE 80
-EXPOSE 443
 EXPOSE 444
 EXPOSE 3306
 EXPOSE 3306/udp
-EXPOSE 3307
-EXPOSE 3307/udp
 
 ENV PASSWORD admin
 

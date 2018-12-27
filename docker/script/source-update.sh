@@ -14,6 +14,3 @@ baseurl=http://nginx.org/packages/centos/7/x86_64/
 gpgcheck=0
 enabled=1
 _EOF_
-
-# Update
-yum update -y

@@ -1,10 +1,7 @@
 #!/bin/bash
 
 # Install 
-yum install -y php-fpm php-cli php-mysqlnd php-gd php-imap \
-php-ldap php-odbc php-pear php-xml php-xmlrpc \
-php-mbstring php-pecl-mcrypt php-devel \
-php-pdo-dblib php-snmp php-soap php-tidy php-pecl-ssh2
+yum install -y php-fpm php-cli php-mbstring php-gd
 
 # Configure
 sed -i "s/daemonize = yes/daemonize = no/" /etc/php-fpm.conf
